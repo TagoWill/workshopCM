@@ -1,15 +1,15 @@
 ﻿	#pragma strict
 	
 	var Food : GameObject;
-	var food : int;
+	private var food : int;
 	var piece : GameObject;
-	var lastPiece : GameObject;
-	 var lives : int;
-	var died: boolean;
+	private var lastPiece : GameObject;
+	private var lives : int;
+	private var died: boolean;
 
 	function Start () {
 		var i :int=0;
-		while(i<3)
+		while(i<6)
 		{
 			placeFood();
 			i++;
@@ -17,23 +17,6 @@
 		food=0;
 		died=false;
 	}
-
-	/*function Update () 
-	{
-
-		transform.Translate(Vector3(0,0,0.080));
-		if(Input.GetKeyUp(KeyCode.RightArrow))
-		{
-			transform.Rotate(Vector3(0,90,0));
-		}
-		else if(Input.GetKeyUp(KeyCode.LeftArrow))
-		{
-			transform.Rotate(Vector3(0,-90,0));
-		}
-		
-	}*/
-
-
 
 	function OnTriggerEnter(col : Collider)
 	{
@@ -49,22 +32,25 @@
 			
 		}
 		
-	if(col.gameObject.name =="Piece")
+	if(col.gameObject.name =="Piece" || col.gameObject.name =="Parede" || col.gameObject.name =="Parede1"
+		|| col.gameObject.name =="Parede2" || col.gameObject.name =="Parede3")
 		{
 		Debug.Log("Colisao com cobra");
 		transform.position= Vector3(0,-100,0);
 		died=true;
 	}
 	}
+	
 	function placeFood()
 	{
 
-	var food2 : GameObject;
-	food2= Instantiate(Food);
-	food2.transform.position= new Vector3(Random.Range(-15,15),0.483,Random.Range(-15,15));
-	food2.name="Food";
-	Debug.Log("Adicionei Food");
+		var food2 : GameObject;
+		food2= Instantiate(Food);
+		food2.transform.position= new Vector3(Random.Range(-15,15),0.483,Random.Range(-15,15));
+		food2.name="Food";
+		Debug.Log("Adicionei Food");
 	}
+	
 	function addPiece()
 	{ 
 		Debug.Log("Adicionei um piece");

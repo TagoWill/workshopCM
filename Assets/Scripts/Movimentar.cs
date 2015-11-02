@@ -4,10 +4,6 @@ using System.Collections.Generic;
 
 public class Movimentar : MonoBehaviour {
 
-	/*private Vector3 teste;
-	public GameObject corpo;
-	private GameObject lastpiece;*/
-
 	private Vector3 fp;   //First touch position
 	private Vector3 lp;   //Last touch position
 	private float dragDistance;  //minimum distance for a swipe to be registered
@@ -18,23 +14,6 @@ public class Movimentar : MonoBehaviour {
 		dragDistance = Screen.height*5/100; //dragDistance is 20% height of the screen 
 	}
 
-	/*void OnTriggerEnter(Collider comida){
-		Debug.Log ("ENTREI");
-		Destroy (comida.gameObject);
-
-		GameObject novapeca = Instantiate (corpo);
-		novapeca.transform.parent = GameObject.Find ("Minhoca").transform;
-		if (lastpiece == null) {
-			novapeca.GetComponent<Transform> ().position = GetComponent<Transform> ().position;
-			novapeca.GetComponent<followObject>().setFollow(this.gameObject);
-		} else {
-			novapeca.GetComponent<Transform> ().position = lastpiece.GetComponent<Transform> ().position;
-			novapeca.GetComponent<followObject>().setFollow(lastpiece);
-		}
-
-		lastpiece = novapeca;
-	}*/
-	
 	// Update is called once per frame
 	void Update () {
 
@@ -97,12 +76,7 @@ public class Movimentar : MonoBehaviour {
 		}
 
 		if(Input.GetKeyDown(KeyCode.W)){
-			if(transform.rotation.eulerAngles.y == 180){
-				Debug.Log("NAO PODE VIRAR");
-			}else{
-				transform.rotation = Quaternion.AngleAxis(0f,new Vector3(0,1,0));
-			}
-
+			transform.rotation = Quaternion.AngleAxis(0f,new Vector3(0,1,0));
 		}
 		if(Input.GetKeyDown(KeyCode.S)){
 			transform.rotation = Quaternion.AngleAxis(180f,new Vector3(0,1,0));
