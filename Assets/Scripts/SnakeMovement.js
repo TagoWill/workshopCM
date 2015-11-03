@@ -77,17 +77,16 @@
 	
 	function OnGUI()
 	{
-	if(died)
-	{
-		GUILayout.Label("Game Over");
-		if(GUILayout.Button("Start Again"))
+		if(died)
 		{
-			
-			Application.LoadLevel(Application.loadedLevel);
-			
-			
-		}
-		}
-		
+			var buttonStyle= new GUIStyle("Button");
+	     	buttonStyle.fontSize = 20;
+	  		GUI.backgroundColor = Color(0.2, 0.3, 0.4, 0.5);
+			GUI.Label(new Rect(Screen.width/2 - 15, Screen.height/2 - 25, 100, 100), "GAME OVER");
+			if(GUI.Button (new Rect(Screen.width/2 - 50, Screen.height/2 + 5, 150, 50), "Start Again", buttonStyle))
+			{
+				Application.LoadLevel(Application.loadedLevel);	
+			}
+		}	
 	}
 	
